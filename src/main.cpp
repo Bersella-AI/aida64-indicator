@@ -14,7 +14,7 @@ char cRawData[8];
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(115200);
+  Serial.begin(9600);
   pinMode(ciLED_PIN,OUTPUT);
   while (lcd.begin(ccSCREEN_COLUMNS,ccSCREEN_ROWS)!=1)
   {
@@ -26,7 +26,7 @@ void setup() {
   lcd.blink();
   lcd.print(F("AIDA64 Indicator"));
   lcd.setCursor(0,1);
-  lcd.print(F("by Ceallium Infinity"));
+  lcd.print(F("by Bersella AI"));
   lcd.setCursor(0,3);
   lcd.print(F("Connecting..."));
   lcd.createChar(ciCHAR_CELSIUS,ccCELSIUS);
@@ -50,7 +50,7 @@ void setup() {
   lcd.print(F("C:"));
   lcd.setCursor(4,1);
   lcd.write(ciCHAR_CELSIUS);
-  lcd.setCursor(11,1);
+  lcd.setCursor(12,1);
   lcd.write('W');
   lcd.setCursor(0,2);
   lcd.print(F("Mem:"));
@@ -87,7 +87,7 @@ void loop() {
     case 'P':
       // CPU Package Power
       lcd.setCursor(6,1);
-      maxLen=5;
+      maxLen=6;
       break;
     case 'p':
       // GPU Board Power
