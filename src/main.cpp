@@ -13,8 +13,10 @@ LiquidCrystal_I2C lcd(PCF8574_ADDR_A21_A11_A01, 4, 5, 6, 16, 11, 12, 13, 14, POS
 char cRawData[8];
 
 void setup() {
-  // put your setup code here, to run once:
+  // Serial's baudrate at default. Can be customized.
   Serial.begin(9600);
+  //Serial.begin(115200);
+
   pinMode(ciLED_PIN,OUTPUT);
   while (lcd.begin(ccSCREEN_COLUMNS,ccSCREEN_ROWS)!=1)
   {
@@ -52,17 +54,17 @@ void setup() {
   lcd.write(ciCHAR_CELSIUS);
   lcd.setCursor(12,1);
   lcd.write('W');
-  lcd.setCursor(0,2);
+  lcd.setCursor(1,2);
   lcd.print(F("Mem:"));
-  lcd.setCursor(11,2);
-  lcd.print(F("VRAM:"));
   lcd.setCursor(0,3);
+  lcd.print(F("VRAM:"));
+  lcd.setCursor(13,2);
   lcd.print(F("MOS:"));
-  lcd.setCursor(6,3);
+  lcd.setCursor(19,2);
   lcd.write(ciCHAR_CELSIUS);
-  lcd.setCursor(11,3);
+  lcd.setCursor(13,3);
   lcd.print(F("SSD:"));
-  lcd.setCursor(17,3);
+  lcd.setCursor(19,3);
   lcd.write(ciCHAR_CELSIUS);
 }
 
@@ -96,13 +98,13 @@ void loop() {
       break;
     case 'M':
       // System Memory Usage
-      lcd.setCursor(4,2);
+      lcd.setCursor(5,2);
       maxLen=5;
       break;
     case 'm':
       // VRAM Usage
-      lcd.setCursor(16,2);
-      maxLen=4;
+      lcd.setCursor(5,3);
+      maxLen=5;
       break;
     case 'f':
       // GPU Core's Frequency
@@ -111,12 +113,12 @@ void loop() {
       break;
     case 'B':
       // Motherboard's MOS Temp.
-      lcd.setCursor(4,3);
+      lcd.setCursor(17,2);
       maxLen=2;
       break;
     case 'b':
       // SSD Temp.
-      lcd.setCursor(15,3);
+      lcd.setCursor(17,3);
       maxLen=2;
       break;
     default:
