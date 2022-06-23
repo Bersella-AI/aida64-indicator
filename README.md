@@ -31,7 +31,7 @@
 | 功耗 - GPU1 | `p` | 6 | 0 \~ 999.99 | 11,1 |
 | 系统 - GPU1 核心频率 | `f` | 4 | 0 \~ 9999 | 5,0 |
 | 系统 - 已用内存 | `M` | 5 | 0 \~ 99999 | 13,2 |
-| 系统 - GPU1 专用内存使用 | `m` | 4 | 0 \~ 99999 | 5,2 |
+| 系统 - GPU1 专用内存使用 | `m` | 5 | 0 \~ 99999 | 5,2 |
 | 温度 - 主板 **MOS** | `B` | 2 | -9 \~ 99 | 6,1 |
 | 温度 - 固态硬盘 | `b` | 2 | -9 \~ 99 | 0,2 |
 
@@ -39,7 +39,7 @@
 
 - **不要勾选“显示单位”（Show unit）！**
 - ~~软件所示模拟显示器中，1-3 行可容纳至多 20 个字符（包括空格）；第 4 行可容纳 4 个。~~  
-  其实这条是单纯考虑到 Serial 的缓冲区“仅含”64 字节罢了……事实上比特率慢至 9600 的话，缓冲区根本来不及填充的罢——16 MHz 频率下，MCU 在两个字节之间足有超万个脉冲的间隔。~~只不过我日常喜欢开 115200 bps，显得它跟我的机器一样迅捷~~
+  其实这条是单纯考虑到 Serial 的缓冲区“仅含”64 字节罢了……事实上比特率慢至 9600 的话，缓冲区根本来不及填充的罢——16 MHz 频率下，MCU 在两个字节之间足有超万个脉冲的间隔。~~只不过我日常喜欢开 115200 bps，这样显得它跟我的机器一样迅捷~~
 - 每个项目之间必须**至少留出一个空格**。
    + 如某一行的第 20 个字符被使用，则下一行第 1 个字符必须为空格。下例可见 `t 35` 前面有一个空格（因上一行 `P 123.14` 使用了第 20 个字符空间）。
 - 温度分类中的“固态硬盘”名称因其型号而异，图标均为“硬盘”。
@@ -76,7 +76,7 @@ VRAM: 5156   SSD:37℃
 # English Manual
 
 *Codename: EPSILON ε*  
-Just an attempt after the Great Depression.  
+Just an attempt after my Great Depression.  
 The program was designed for **monitoring hardware components on the computer via Arduino**.
 
 ### Hardware needed
@@ -90,8 +90,8 @@ The program was designed for **monitoring hardware components on the computer vi
 
 ### Technical notes
 Improvements over *cokesu*'s solution have been made, including:
-- Up to 9 items can be transfered. Please see the chart below.
-- The ending pattern `E` has been removed, to suffice the 64-byte limit on the Serial's buffer (defined by `Arduino.h`).
+- Up to 9 items can be transfered. Please refer to the chart below.
+- The ending pattern `E` has been removed, to make data transfer more efficient.
 - ~~The Serial is configured to run on 115200 bps -- the default 9600 bps is sufficient enough, though.~~ That can be customized if needed :-P
 
 Instructions on AIDA64:
